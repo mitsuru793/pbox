@@ -1,0 +1,11 @@
+{
+    "name": "mitsuru793/pbox",
+    "description": "stdClass wrapper",
+    "authors": [
+        {
+            "name": "mitsuru793",
+            "email": "mitsuru793@gmail.com"
+        }
+    ],
+    "require": {}
+}
