@@ -7,5 +7,10 @@
             "email": "mitsuru793@gmail.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Pbox\\": "src/"
+        }
+    }
 }
