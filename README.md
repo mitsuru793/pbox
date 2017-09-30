@@ -10,7 +10,7 @@
 
 MagicalBoxを継承するだけで、配列、JSON、stdClassに変換可能なクラスを作る事ができます。コンストラクタでundefinedなプロパティをJSONから取得しようとするとエラーになります。これによりスキーマの検証が事前に可能です。
 
-公開するプロパティ名は`$attributes`に記述します。他のプロパティは内部的なメタ情報となり、外部に公開されません。
+公開するプロパティ名は`$attributes`に記述します。他のプロパティは内部的なメタ情報となり、外部に公開されません。下記だと`$meta`にコンストラクタで値を入れても、外部からアクセスしたり、JSONに変換時に出力されません。
 
 ```php
 <?php
@@ -41,7 +41,7 @@ class User extends MagicalBox
     // auto call when access property
     public function name()
     {
-        return "[$name]";
+        return "@{$this->name}@";
     }
 }
 
@@ -60,10 +60,10 @@ $user->age;
 
 // convert format
 $user->toArray();
-// ['name' => '[mitsuru793]', 'from' => 'japan]
+// ['name' => '@mitsuru793@', 'from' => 'japan]
 
 $user->toJson(); // string
-// '{"name":"[mitsuru793]","from":"japan"}'
+// '{"name":"@mitsuru793@","from":"japan"}'
 
 $user->toObject(); // stdClass 
 ```
