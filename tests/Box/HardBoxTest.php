@@ -8,7 +8,7 @@ class HardBoxTest extends TestCase
 {
     public function testPrivatePropertyDoesNotBeOutput()
     {
-        $box = new MockBox();
+        $box = new MockHardBox();
         $expected = [
             'pubProp' => 'pubValue',
             'proProp' => 'proValue',
@@ -24,14 +24,14 @@ class HardBoxTest extends TestCase
 
     public function testHiddenPropertyDoesNotBeOutput()
     {
-        $box = new class extends MockBox
+        $box = new class extends MockHardBox
         {
             public $hidden = ['pubProp'];
         };
         $expected = ['proProp' => 'proValue'];
         $this->assertSameConvert($expected, $box);
 
-        $box = new class extends MockBox
+        $box = new class extends MockHardBox
         {
             public $hidden = ['pubProp', 'proProp'];
         };
@@ -40,7 +40,7 @@ class HardBoxTest extends TestCase
 
     public function testNullPropertyIsOutput()
     {
-        $box = new class extends MockBox
+        $box = new class extends MockHardBox
         {
             public $pubProp = null;
         };
@@ -53,7 +53,7 @@ class HardBoxTest extends TestCase
 
     public function testHiddenIfNullProperty()
     {
-        $box = new class extends MockBox
+        $box = new class extends MockHardBox
         {
             public $hiddenIfNull = ['pubProp'];
             public $pubProp = 'pubValue';
@@ -73,7 +73,7 @@ class HardBoxTest extends TestCase
 
     public function testHiddenAllIfProperty()
     {
-        $box = new class extends MockBox
+        $box = new class extends MockHardBox
         {
             public $pubProp = null;
             public $proProp = null;
@@ -87,7 +87,7 @@ class HardBoxTest extends TestCase
 
     public function testAliasProperty()
     {
-        $box = new class extends MockBox
+        $box = new class extends MockHardBox
         {
             public $alias = ['pubProp' => 'changed'];
         };
@@ -108,7 +108,7 @@ class HardBoxTest extends TestCase
             }
         };
 
-        $box = new class ($object) extends MockBox
+        $box = new class ($object) extends MockHardBox
         {
             function __construct($object)
             {
@@ -189,7 +189,7 @@ class HardBoxTest extends TestCase
     }
 }
 
-class MockBox extends HardBox
+class MockHardBox extends HardBox
 {
     public $pubProp = 'pubValue';
     protected $proProp = 'proValue';
