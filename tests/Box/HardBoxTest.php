@@ -6,6 +6,11 @@ use PHPUnit\Framework\TestCase;
 
 class HardBoxTest extends TestCase
 {
+    use HardBoxTestConvertTest;
+}
+
+trait HardBoxTestConvertTest
+{
     public function testPrivatePropertyDoesNotBeOutput()
     {
         $box = new MockHardBox();
@@ -14,12 +19,6 @@ class HardBoxTest extends TestCase
             'proProp' => 'proValue',
         ];
         $this->assertSameConvert($expected, $box);
-    }
-
-    private function assertSameConvert(array $expectedArray, HardBox $box)
-    {
-        $this->assertSame($expectedArray, $box->toArray());
-        $this->assertSame(json_encode($expectedArray), $box->toJson());
     }
 
     public function testHiddenPropertyDoesNotBeOutput()
@@ -186,6 +185,12 @@ class HardBoxTest extends TestCase
             'prop' => [1, 2],
         ];
         $this->assertSameConvert($expected, $box);
+    }
+
+    private function assertSameConvert(array $expectedArray, HardBox $box)
+    {
+        $this->assertSame($expectedArray, $box->toArray());
+        $this->assertSame(json_encode($expectedArray), $box->toJson());
     }
 }
 

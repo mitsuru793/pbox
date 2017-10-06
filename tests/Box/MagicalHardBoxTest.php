@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 class MagicalHardBoxTest extends TestCase
 {
-    use ConvertTest;
+    use MagicalHardBoxConvertTest;
 
     public function testSetAndGetPropertyWithoutAccessor()
     {
@@ -75,7 +75,7 @@ class MagicalHardBoxTest extends TestCase
     }
 }
 
-trait ConvertTest {
+trait MagicalHardBoxConvertTest {
     public function testPrivatePropertyDoesNotBeOutput()
     {
         $box = new MockMagicalHardBox();
