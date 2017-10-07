@@ -33,7 +33,7 @@ abstract class Box
      */
     public function toArray(): array
     {
-        $vars = get_object_vars($this);
+        $vars = $this->attributes();
         unset($vars['hidden']);
         unset($vars['hiddenIfNull']);
         unset($vars['hiddenAllIfNull']);
@@ -68,4 +68,6 @@ abstract class Box
     {
         return get_class_vars(__CLASS__);
     }
+
+    abstract public function attributes(): array;
 }
