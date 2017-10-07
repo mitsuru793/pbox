@@ -8,7 +8,7 @@ class MagicalHardBox extends Box
 {
     public function __get(string $name)
     {
-        if (array_key_exists($name, get_object_vars($this))) {
+        if (array_key_exists($name, $this->attributes())) {
             $getter = "get$name";
             $value = $this->$name;
             return method_exists($this, $getter) ? $this->$getter($value) : $value;
@@ -21,7 +21,7 @@ class MagicalHardBox extends Box
 
     public function __set(string $name, $value)
     {
-        if (array_key_exists($name, get_object_vars($this))) {
+        if (array_key_exists($name, $this->attributes())) {
             $setter = "set$name";
             if (method_exists($this, $setter)) {
                 $this->$setter($value);
