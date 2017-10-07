@@ -73,6 +73,16 @@ class MagicalHardBoxTest extends TestCase
         $this->assertSame($expectedArray, $box->toArray());
         $this->assertSame(json_encode($expectedArray), $box->toJson());
     }
+
+    public function testAttributes()
+    {
+        $box = new MockMagicalHardBox;
+        $expected = [
+            'pubProp' => 'pubValue',
+            'proProp' => 'proValue',
+        ];
+        $this->assertSame($expected, $box->attributes());
+    }
 }
 
 trait MagicalHardBoxConvertTest {
