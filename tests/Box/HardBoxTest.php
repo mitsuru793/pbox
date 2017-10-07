@@ -187,6 +187,16 @@ trait HardBoxTestConvertTest
         $this->assertSameConvert($expected, $box);
     }
 
+    public function testAttributes()
+    {
+        $box = new MockHardBox;
+        $expected = [
+            'pubProp' => 'pubValue',
+            'proProp' => 'proValue',
+        ];
+        $this->assertSame($expected, $box->attributes());
+    }
+
     private function assertSameConvert(array $expectedArray, HardBox $box)
     {
         $this->assertSame($expectedArray, $box->toArray());
