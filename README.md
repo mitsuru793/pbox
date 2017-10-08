@@ -39,7 +39,7 @@ class User extends MagicalBox
     }
     
     // auto call when access property
-    public function name()
+    public function getNameAttribute()
     {
         return "@{$this->name}@";
     }
@@ -107,7 +107,7 @@ class User extends MagicalBox
     }
     
     // auto call when access property
-    public function name(string $name)
+    public function getNameAttribute(string $name)
     {
         return "[$name]";
     }

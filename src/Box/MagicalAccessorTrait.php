@@ -9,7 +9,7 @@ trait MagicalAccessorTrait
     public function __get(string $name)
     {
         if (array_key_exists($name, $this->attributes())) {
-            $getter = "get$name";
+            $getter = "get{$name}Attribute";
             $value = $this->$name;
             return method_exists($this, $getter) ? $this->$getter($value) : $value;
         }
@@ -22,7 +22,7 @@ trait MagicalAccessorTrait
     public function __set(string $name, $value)
     {
         if (array_key_exists($name, $this->attributes())) {
-            $setter = "set$name";
+            $setter = "set{$name}Attribute";
             if (method_exists($this, $setter)) {
                 $this->$setter($value);
             } else {

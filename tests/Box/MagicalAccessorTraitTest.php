@@ -22,7 +22,7 @@ class MagicalAccessorTraitTest extends TestCase
         {
             protected $prop;
 
-            public function setProp($value)
+            public function setPropAttribute($value)
             {
                 $this->prop = 'from setter';
             }
@@ -37,7 +37,7 @@ class MagicalAccessorTraitTest extends TestCase
         {
             protected $prop;
 
-            public function getProp($value)
+            public function getPropAttribute($value)
             {
                 return 'from setter';
             }
@@ -52,12 +52,12 @@ class MagicalAccessorTraitTest extends TestCase
         {
             public $prop;
 
-            public function getProp($value)
+            public function getPropAttribute($value)
             {
                 return 'from getter';
             }
 
-            public function setProp($value)
+            public function setPropAttribute($value)
             {
                 return 'from setter';
             }
