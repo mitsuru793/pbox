@@ -1,5 +1,23 @@
 # PBox
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+
+- [こんな事に困っていませんか？](#%E3%81%93%E3%82%93%E3%81%AA%E4%BA%8B%E3%81%AB%E5%9B%B0%E3%81%A3%E3%81%A6%E3%81%84%E3%81%BE%E3%81%9B%E3%82%93%E3%81%8B)
+- [コーディングに合わせたベースクラス](#%E3%82%B3%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E3%81%AB%E5%90%88%E3%82%8F%E3%81%9B%E3%81%9F%E3%83%99%E3%83%BC%E3%82%B9%E3%82%AF%E3%83%A9%E3%82%B9)
+- [MagicalBox](#magicalbox)
+- [MagicalHardBox](#magicalhardbox)
+- [HardBox](#hardbox)
+- [ValueObject](#valueobject)
+- [フォーマットの変換時の設定](#%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%83%E3%83%88%E3%81%AE%E5%A4%89%E6%8F%9B%E6%99%82%E3%81%AE%E8%A8%AD%E5%AE%9A)
+  - [$hidden](#hidden)
+  - [$hiddenIfNull](#hiddenifnull)
+  - [hiddenAllIfNull](#hiddenallifnull)
+  - [$alias](#alias)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## こんな事に困っていませんか？
 
 取り敢えずJSONでDBに保存。そして、デコードしたJSONをstdClassのまま使っていませんか？膨れ上がるJSON。スキーマが分からなくなってしまいます。そんな時はPboxを使い、ラッパークラスを作りスキーマを保証しましょう。
