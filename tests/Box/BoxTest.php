@@ -6,6 +6,18 @@ use PHPUnit\Framework\TestCase;
 class BoxTest extends TestCase
 {
     use BoxConvertTest;
+
+    public function testMetaAttributes()
+    {
+        $box = new MockBox;
+        $expected = [
+            'hidden' => [],
+            'hiddenIfNull' => [],
+            'hiddenAllIfNull' => false,
+            'alias' => [],
+        ];
+        $this->assertSame($expected, $box->metaAttributes());
+    }
 }
 
 trait BoxConvertTest {
