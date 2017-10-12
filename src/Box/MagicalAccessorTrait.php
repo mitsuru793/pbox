@@ -38,7 +38,7 @@ trait MagicalAccessorTrait
 
     public function __isset($name): bool
     {
-        return isset($this->$name);
+        return isset($this->attributes()[$name]);
     }
 
     abstract public function attributes(): array;
