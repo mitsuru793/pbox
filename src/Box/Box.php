@@ -34,10 +34,6 @@ abstract class Box
     public function toArray(): array
     {
         $vars = $this->attributes();
-        foreach ($this->metaAttributes() as $metaProp => $value) {
-            unset($vars[$metaProp]);
-        }
-
         $array = [];
         foreach ($vars as $key => $val) {
             if (in_array($key, $this->hidden)) {
