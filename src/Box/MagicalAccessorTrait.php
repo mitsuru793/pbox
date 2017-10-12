@@ -41,7 +41,5 @@ trait MagicalAccessorTrait
         return isset($this->$name);
     }
 
-    abstract public function metaAttributes(): array;
-
     abstract public function attributes(): array;
 }
