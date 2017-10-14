@@ -2,7 +2,7 @@
 
 namespace Pbox\Box;
 
-abstract class HardBox extends Box
+abstract class HardBox
 {
     use HasAttributes;
 }

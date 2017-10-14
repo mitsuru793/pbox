@@ -2,7 +2,7 @@
 
 namespace Pbox\Box;
 
-class MagicalBox extends Box
+class MagicalBox
 {
     use MagicalAccessorTrait;
 
