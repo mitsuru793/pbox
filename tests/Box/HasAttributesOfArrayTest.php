@@ -6,7 +6,7 @@ use Mockery as m;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 
-class HasDynamicAttributesTest extends TestCase
+class HasAttributesOfArrayTest extends TestCase
 {
     public function testAttributesReturnsProperty()
     {
@@ -15,7 +15,7 @@ class HasDynamicAttributesTest extends TestCase
             'prop2' => 'value2',
         ];
 
-        $double = m::mock(HasDynamicAttributes::class);
+        $double = m::mock(HasAttributesOfArray::class);
         $this->setProp($double, 'attributes', $attributes);
         $this->assertSame($attributes, $double->attributes());
     }
