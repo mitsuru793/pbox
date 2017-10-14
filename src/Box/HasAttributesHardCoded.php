@@ -2,7 +2,7 @@
 
 namespace Pbox\Box;
 
-trait HasAttributes
+trait HasAttributesHardCoded
 {
     public function attributes(): array
     {
