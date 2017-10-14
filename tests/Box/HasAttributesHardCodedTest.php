@@ -36,9 +36,12 @@ class MockObject
 
     private $hiddenProperties;
 
-    public function __construct(array $hiddenProperties = [])
+    public function __construct(array $hiddenPropertyNames = [])
     {
-        $this->hiddenProperties = $hiddenProperties;
+        $this->hiddenProperties = [];
+        foreach ($hiddenPropertyNames as $name) {
+           $this->hiddenProperties[$name]  = $this->$name;
+        }
     }
 
     protected function hiddenProperties(): array
