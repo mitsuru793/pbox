@@ -4,6 +4,12 @@ namespace Pbox\Box;
 
 trait HasAttributesHardCoded
 {
+    /**
+     * Returns array of exposed properties to outside.
+     * You can expose properties to outside even if they are not public, so protected or private.
+     *
+     * @return array
+     */
     public function attributes(): array
     {
         $allProps = get_object_vars($this);
