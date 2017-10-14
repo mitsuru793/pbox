@@ -17,4 +17,9 @@ trait HasAttributes
         }
         return $publicProps;
     }
+
+    public function metaAttributes(): array
+    {
+        return get_class_vars(__CLASS__);
+    }
 }
