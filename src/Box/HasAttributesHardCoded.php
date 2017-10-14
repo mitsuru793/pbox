@@ -13,7 +13,7 @@ trait HasAttributesHardCoded
     public function attributes(): array
     {
         $allProps = get_object_vars($this);
-        $metaProps = $this->hiddenProperties();
+        $metaProps = array_flip($this->hiddenProperties());
 
         $publicProps = [];
         foreach ($allProps as $prop => $value) {
