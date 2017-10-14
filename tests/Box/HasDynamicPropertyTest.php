@@ -4,11 +4,11 @@ namespace Pbox\Box;
 
 use PHPUnit\Framework\TestCase;
 
-class MagicalAccessorTraitTest extends TestCase
+class HasDynamicPropertyTest extends TestCase
 {
     public function testSetAndGetPropertyWithoutAccessor()
     {
-        $box = new class extends MockMagicalAccessorTraitBase
+        $box = new class extends MockHasDynamicPropertyBase
         {
             protected $prop;
         };
@@ -18,7 +18,7 @@ class MagicalAccessorTraitTest extends TestCase
 
     public function testCallSetterWhenSetProperty()
     {
-        $box = new class extends MockMagicalAccessorTraitBase
+        $box = new class extends MockHasDynamicPropertyBase
         {
             protected $prop;
 
@@ -33,7 +33,7 @@ class MagicalAccessorTraitTest extends TestCase
 
     public function testCallGetterWhenSetProperty()
     {
-        $box = new class extends MockMagicalAccessorTraitBase
+        $box = new class extends MockHasDynamicPropertyBase
         {
             protected $prop;
 
@@ -48,7 +48,7 @@ class MagicalAccessorTraitTest extends TestCase
 
     public function testNotCallAccessorWhenAccessPublicProperty()
     {
-        $box = new class extends MockMagicalAccessorTraitBase
+        $box = new class extends MockHasDynamicPropertyBase
         {
             public $prop;
 
@@ -67,9 +67,9 @@ class MagicalAccessorTraitTest extends TestCase
     }
 }
 
-class MockMagicalAccessorTraitBase
+class MockHasDynamicPropertyBase
 {
-    use MagicalAccessorTrait;
+    use HasDynamicProperty;
 
     public function metaAttributes(): array
     {
@@ -91,7 +91,7 @@ class MockMagicalAccessorTraitBase
     }
 }
 
-class MockMagicalAccessorTrait extends MockMagicalAccessorTraitBase
+class MockHasDynamicProperty extends MockHasDynamicPropertyBase
 {
     public $pubProp = 'pubValue';
     protected $proProp = 'proValue';
