@@ -65,15 +65,6 @@ class HasDynamicPropertyHardCodedTest extends TestCase
         $object->prop = 'from outside';
         $this->assertSame('from outside', $object->prop);
     }
-
-    public function testIsset()
-    {
-        $object = new MockHasDynamicPropertyHardCoded;
-        $this->assertTrue(isset($object->pubProp));
-        $this->assertTrue(isset($object->proProp));
-        $this->assertTrue(isset($object->priProp));
-        $this->assertFalse(isset($object->invalid));
-    }
 }
 
 class MockHasDynamicPropertyHardCodedBase
