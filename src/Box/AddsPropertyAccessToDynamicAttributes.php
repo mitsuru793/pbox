@@ -6,7 +6,7 @@ use Pbox\Exception\AccessStaticPropertyException;
 use Pbox\Exception\UndefinedPropertyException;
 
 /**
- * Trait HasDynamicPropertyOfArray
+ * Trait AddsPropertyAccessToDynamicAttributes
  *
  * Must define property $attributes as array.
  * example:
@@ -14,7 +14,7 @@ use Pbox\Exception\UndefinedPropertyException;
  *
  * @package Pbox\Box
  */
-trait HasDynamicPropertyOfArray
+trait AddsPropertyAccessToDynamicAttributes
 {
     public function __get(string $name)
     {

@@ -28,7 +28,7 @@ use Pbox\Exception\UndefinedPropertyException;
  */
 trait HasTypedDynamicPropertyOfArray
 {
-    use HasDynamicPropertyOfArray;
+    use AddsPropertyAccessToDynamicAttributes;
 
     /**
      * @param string $name

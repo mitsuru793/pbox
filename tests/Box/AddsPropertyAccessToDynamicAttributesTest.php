@@ -4,13 +4,13 @@ namespace Pbox\Box;
 
 use PHPUnit\Framework\TestCase;
 
-class HasDynamicPropertyOfArrayTest extends TestCase
+class AddsPropertyAccessToDynamicAttributesTest extends TestCase
 {
     public function testSetAndGetPropertyWithoutAccessor()
     {
         $mock = new class
         {
-            use HasDynamicPropertyOfArray;
+            use AddsPropertyAccessToDynamicAttributes;
             private $attributes = ['prop' => null];
         };
         $mock->prop = 'from outside';
@@ -21,7 +21,7 @@ class HasDynamicPropertyOfArrayTest extends TestCase
     {
         $mock = new class
         {
-            use HasDynamicPropertyOfArray;
+            use AddsPropertyAccessToDynamicAttributes;
             private $attributes = ['prop' => null];
 
             public function setPropAttribute($value)
@@ -37,7 +37,7 @@ class HasDynamicPropertyOfArrayTest extends TestCase
     {
         $mock = new class
         {
-            use HasDynamicPropertyOfArray;
+            use AddsPropertyAccessToDynamicAttributes;
             private $attributes = ['prop' => null];
 
             public function getPropAttribute($value)
@@ -53,7 +53,7 @@ class HasDynamicPropertyOfArrayTest extends TestCase
     {
         $mock = new class
         {
-            use HasDynamicPropertyOfArray;
+            use AddsPropertyAccessToDynamicAttributes;
             public $prop;
 
             public function getPropAttribute($value)
@@ -74,7 +74,7 @@ class HasDynamicPropertyOfArrayTest extends TestCase
     {
         $mock = new class
         {
-            use HasDynamicPropertyOfArray;
+            use AddsPropertyAccessToDynamicAttributes;
             private $attributes = ['p1' => 'v1', 'p2' => 'v2'];
         };
         $expected = ['p1' => 'v1', 'p2' => 'v2'];
@@ -85,7 +85,7 @@ class HasDynamicPropertyOfArrayTest extends TestCase
     {
         $mock = new class
         {
-            use HasDynamicPropertyOfArray;
+            use AddsPropertyAccessToDynamicAttributes;
             private $attributes = ['p1' => 'v1', 'p2' => null];
         };
         $this->assertTrue(isset($mock->p1));
