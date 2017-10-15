@@ -3,6 +3,7 @@
 namespace Pbox\Box;
 
 use OutOfRangeException;
+use Pbox\Exception\UndefinedPropertyException;
 
 /**
  * Trait HasDynamicPropertyOfArray
@@ -24,7 +25,7 @@ trait HasDynamicPropertyOfArray
         if (property_exists($this, $name)) {
             throw new OutOfRangeException("Cannot access static property: $name");
         }
-        throw new OutOfRangeException("Undefined property: $name");
+        throw new UndefinedPropertyException($name);
     }
 
     public function __set(string $name, $value)
@@ -41,7 +42,7 @@ trait HasDynamicPropertyOfArray
         if (property_exists($this, $name)) {
             throw new OutOfRangeException("Cannot access static property: $name");
         }
-        throw new OutOfRangeException("Undefined property: $name");
+        throw new UndefinedPropertyException($name);
     }
 
     public function __isset($name): bool
