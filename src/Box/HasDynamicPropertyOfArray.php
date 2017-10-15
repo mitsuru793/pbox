@@ -8,8 +8,9 @@ use Pbox\Exception\UndefinedPropertyException;
 /**
  * Trait HasDynamicPropertyOfArray
  *
- * Must define property $attributes as array
- * protected/private $attributes = ['name' => 'initial value']
+ * Must define property $attributes as array.
+ * example:
+ *     protected $attributes = ['name' => 'initial value']
  *
  * @package Pbox\Box
  */
