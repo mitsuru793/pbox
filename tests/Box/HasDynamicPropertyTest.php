@@ -8,17 +8,17 @@ class HasDynamicPropertyHardCodedTest extends TestCase
 {
     public function testSetAndGetPropertyWithoutAccessor()
     {
-        $box = new class extends MockHasDynamicPropertyHardCodedBase
+        $object = new class extends MockHasDynamicPropertyHardCodedBase
         {
             protected $prop;
         };
-        $box->prop = 'from outside';
-        $this->assertSame('from outside', $box->prop);
+        $object->prop = 'from outside';
+        $this->assertSame('from outside', $object->prop);
     }
 
     public function testCallSetterWhenSetProperty()
     {
-        $box = new class extends MockHasDynamicPropertyHardCodedBase
+        $object = new class extends MockHasDynamicPropertyHardCodedBase
         {
             protected $prop;
 
@@ -27,13 +27,13 @@ class HasDynamicPropertyHardCodedTest extends TestCase
                 $this->prop = 'from setter';
             }
         };
-        $box->prop = 'from outside';
-        $this->assertSame('from setter', $box->prop);
+        $object->prop = 'from outside';
+        $this->assertSame('from setter', $object->prop);
     }
 
     public function testCallGetterWhenSetProperty()
     {
-        $box = new class extends MockHasDynamicPropertyHardCodedBase
+        $object = new class extends MockHasDynamicPropertyHardCodedBase
         {
             protected $prop;
 
@@ -42,13 +42,13 @@ class HasDynamicPropertyHardCodedTest extends TestCase
                 return 'from setter';
             }
         };
-        $box->prop = 'from outside';
-        $this->assertSame('from setter', $box->prop);
+        $object->prop = 'from outside';
+        $this->assertSame('from setter', $object->prop);
     }
 
     public function testNotCallAccessorWhenAccessPublicProperty()
     {
-        $box = new class extends MockHasDynamicPropertyHardCodedBase
+        $object = new class extends MockHasDynamicPropertyHardCodedBase
         {
             public $prop;
 
@@ -62,8 +62,8 @@ class HasDynamicPropertyHardCodedTest extends TestCase
                 return 'from setter';
             }
         };
-        $box->prop = 'from outside';
-        $this->assertSame('from outside', $box->prop);
+        $object->prop = 'from outside';
+        $this->assertSame('from outside', $object->prop);
     }
 
     public function testIsset()
