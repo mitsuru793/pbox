@@ -4,7 +4,7 @@ namespace Pbox\Box;
 
 use OutOfRangeException;
 
-trait HasDynamicProperty
+trait HasDynamicPropertyHardCoded
 {
     public function __get(string $name)
     {

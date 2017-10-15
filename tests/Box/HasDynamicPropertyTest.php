@@ -4,11 +4,11 @@ namespace Pbox\Box;
 
 use PHPUnit\Framework\TestCase;
 
-class HasDynamicPropertyTest extends TestCase
+class HasDynamicPropertyHardCodedTest extends TestCase
 {
     public function testSetAndGetPropertyWithoutAccessor()
     {
-        $box = new class extends MockHasDynamicPropertyBase
+        $box = new class extends MockHasDynamicPropertyHardCodedBase
         {
             protected $prop;
         };
@@ -18,7 +18,7 @@ class HasDynamicPropertyTest extends TestCase
 
     public function testCallSetterWhenSetProperty()
     {
-        $box = new class extends MockHasDynamicPropertyBase
+        $box = new class extends MockHasDynamicPropertyHardCodedBase
         {
             protected $prop;
 
@@ -33,7 +33,7 @@ class HasDynamicPropertyTest extends TestCase
 
     public function testCallGetterWhenSetProperty()
     {
-        $box = new class extends MockHasDynamicPropertyBase
+        $box = new class extends MockHasDynamicPropertyHardCodedBase
         {
             protected $prop;
 
@@ -48,7 +48,7 @@ class HasDynamicPropertyTest extends TestCase
 
     public function testNotCallAccessorWhenAccessPublicProperty()
     {
-        $box = new class extends MockHasDynamicPropertyBase
+        $box = new class extends MockHasDynamicPropertyHardCodedBase
         {
             public $prop;
 
@@ -67,9 +67,9 @@ class HasDynamicPropertyTest extends TestCase
     }
 }
 
-class MockHasDynamicPropertyBase
+class MockHasDynamicPropertyHardCodedBase
 {
-    use HasDynamicProperty;
+    use HasDynamicPropertyHardCoded;
 
     public function attributes(): array
     {
@@ -77,7 +77,7 @@ class MockHasDynamicPropertyBase
     }
 }
 
-class MockHasDynamicProperty extends MockHasDynamicPropertyBase
+class MockHasDynamicPropertyHardCoded extends MockHasDynamicPropertyHardCodedBase
 {
     public $pubProp = 'pubValue';
     protected $proProp = 'proValue';
