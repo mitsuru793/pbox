@@ -4,11 +4,11 @@ namespace Pbox\Box;
 
 use PHPUnit\Framework\TestCase;
 
-class HasDynamicPropertyHardCodedTest extends TestCase
+class AddsPropertyAccessToStaticAttributesTest extends TestCase
 {
     public function testSetAndGetPropertyWithoutAccessor()
     {
-        $object = new class extends MockHasDynamicPropertyHardCodedBase
+        $object = new class extends MockAddsPropertyAccessToStaticAttributesBase
         {
             protected $prop;
         };
@@ -18,7 +18,7 @@ class HasDynamicPropertyHardCodedTest extends TestCase
 
     public function testCallSetterWhenSetProperty()
     {
-        $object = new class extends MockHasDynamicPropertyHardCodedBase
+        $object = new class extends MockAddsPropertyAccessToStaticAttributesBase
         {
             protected $prop;
 
@@ -33,7 +33,7 @@ class HasDynamicPropertyHardCodedTest extends TestCase
 
     public function testCallGetterWhenSetProperty()
     {
-        $object = new class extends MockHasDynamicPropertyHardCodedBase
+        $object = new class extends MockAddsPropertyAccessToStaticAttributesBase
         {
             protected $prop;
 
@@ -48,7 +48,7 @@ class HasDynamicPropertyHardCodedTest extends TestCase
 
     public function testNotCallAccessorWhenAccessPublicProperty()
     {
-        $object = new class extends MockHasDynamicPropertyHardCodedBase
+        $object = new class extends MockAddsPropertyAccessToStaticAttributesBase
         {
             public $prop;
 
@@ -67,9 +67,9 @@ class HasDynamicPropertyHardCodedTest extends TestCase
     }
 }
 
-class MockHasDynamicPropertyHardCodedBase
+class MockAddsPropertyAccessToStaticAttributesBase
 {
-    use HasDynamicPropertyHardCoded;
+    use AddsPropertyAccessToStaticAttributes;
 
     public function attributes(): array
     {
@@ -77,7 +77,7 @@ class MockHasDynamicPropertyHardCodedBase
     }
 }
 
-class MockHasDynamicPropertyHardCoded extends MockHasDynamicPropertyHardCodedBase
+class MockAddsPropertyAccessToStaticAttributes extends MockAddsPropertyAccessToStaticAttributesBase
 {
     public $pubProp = 'pubValue';
     protected $proProp = 'proValue';
