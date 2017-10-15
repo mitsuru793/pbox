@@ -7,7 +7,7 @@ use IteratorAggregate;
 use Pbox\Exception\AgainstTypehintException;
 use PHPUnit\Framework\TestCase;
 
-class HasTypedDynamicPropertyOfArrayTest extends TestCase
+class AddsPropertyAccessWithTypehintToDynamicAttributesTest extends TestCase
 {
     use TestDefaultTypehintWhenSetProperty;
 
@@ -19,7 +19,7 @@ class HasTypedDynamicPropertyOfArrayTest extends TestCase
 
         $this->mock = new class
         {
-            use HasTypedDynamicPropertyOfArray;
+            use AddsPropertyAccessWithTypehintToDynamicAttributes;
 
             private $typehints = [
                 'pArray' => 'array',
@@ -39,7 +39,7 @@ class HasTypedDynamicPropertyOfArrayTest extends TestCase
     {
         $mock = new class
         {
-            use HasTypedDynamicPropertyOfArray;
+            use AddsPropertyAccessWithTypehintToDynamicAttributes;
             private $typehints = ['prop' => 'startWithAtmark'];
             private $attributes = [];
 

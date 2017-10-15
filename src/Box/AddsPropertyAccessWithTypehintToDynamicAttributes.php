@@ -9,7 +9,7 @@ use Pbox\Exception\AgainstTypehintException;
 use Pbox\Exception\UndefinedPropertyException;
 
 /**
- * Trait HasTypedDynamicPropertyOfArray
+ * Trait AddsPropertyAccessWithTypehintToDynamicAttributes
  *
  * Must define property $attributes as array.
  * The value of array is typehint.
@@ -26,7 +26,7 @@ use Pbox\Exception\UndefinedPropertyException;
  *
  * @package Pbox\Box
  */
-trait HasTypedDynamicPropertyOfArray
+trait AddsPropertyAccessWithTypehintToDynamicAttributes
 {
     use AddsPropertyAccessToDynamicAttributes;
 
