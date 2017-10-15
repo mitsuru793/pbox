@@ -14,11 +14,11 @@ use Pbox\Exception\UndefinedPropertyException;
  * Must define property $attributes as array.
  * The value of array is typehint.
  * example:
- *     protected $attributes = ['name' => 'string']
+ *     protected $typehints = ['name' => 'string']
  *
  * You can use closure as typehint.
  * example:
- *     protected $attributes = [
+ *     protected $typehints = [
  *         'startWithAtmark' => function ($value) {
  *             return is_string($value) && preg_match('~^@~', $value);
  *          }
