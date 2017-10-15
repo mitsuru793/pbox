@@ -2,7 +2,7 @@
 
 namespace Pbox\Box;
 
-trait HasAttributesOfArray
+trait HasDynamicAttributes
 {
     /** @var array */
     protected $attributes = [];
