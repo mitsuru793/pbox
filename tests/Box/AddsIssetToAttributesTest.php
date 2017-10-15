@@ -4,11 +4,11 @@ namespace Pbox\Box;
 
 use PHPUnit\Framework\TestCase;
 
-class HasIssetFroAttributesTest extends TestCase
+class AddsIssetToAttributesTest extends TestCase
 {
     public function testIsset()
     {
-        $mock = new MockHasIssetFroAttributes;
+        $mock = new MockAddsIssetToAttributes;
 
         $this->assertTrue(isset($mock->prop1));
         $this->assertTrue(isset($mock->prop2));
@@ -16,9 +16,9 @@ class HasIssetFroAttributesTest extends TestCase
     }
 }
 
-class MockHasIssetFroAttributes
+class MockAddsIssetToAttributes
 {
-    use HasIssetForAttributes;
+    use AddsIssetToAttributes;
 
     public function attributes(): array
     {

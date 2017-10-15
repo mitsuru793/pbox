@@ -2,7 +2,7 @@
 
 namespace Pbox\Box;
 
-trait HasIssetForAttributes
+trait AddsIssetToAttributes
 {
     public function __isset($name): bool
     {
