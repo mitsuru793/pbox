@@ -4,7 +4,7 @@ namespace Pbox\Box;
 
 use PHPUnit\Framework\TestCase;
 
-class HasAttributesHardCodedTest extends TestCase
+class HasStaticAttributesTest extends TestCase
 {
     public function testAttributes()
     {
@@ -28,7 +28,7 @@ class HasAttributesHardCodedTest extends TestCase
 
 class MockObject
 {
-    use HasAttributesHardCoded;
+    use HasStaticAttributes;
 
     public $pubProp = 'pubValue';
     protected $proProp = 'proValue';

@@ -2,7 +2,7 @@
 
 namespace Pbox\Box;
 
-trait HasAttributesHardCoded
+trait HasStaticAttributes
 {
     /**
      * Returns array of exposed properties to outside.
