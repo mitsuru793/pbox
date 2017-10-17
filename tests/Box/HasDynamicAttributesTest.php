@@ -2,29 +2,50 @@
 
 namespace Pbox\Box;
 
-use Mockery as m;
+use Pbox\Exception\UndefinedAttributeException;
 use PHPUnit\Framework\TestCase;
-use ReflectionClass;
 
 class HasDynamicAttributesTest extends TestCase
 {
-    public function testAttributesReturnsProperty()
+    public function testAttributeReturnsValueByName()
     {
-        $attributes = [
-            'prop1' => 'value1',
-            'prop2' => 'value2',
-        ];
-
-        $double = m::mock(HasDynamicAttributes::class);
-        $this->setProp($double, 'attributes', $attributes);
-        $this->assertSame($attributes, $double->attributes());
+        $o = new MockHasDynamicAttributes;
+        $this->assertSame('v1', $o->attribute('p1'));
     }
 
-    private function setProp($object, string $prop, $value)
+    public function testAttributeThrowsExceptionWhenAccessUndefined()
     {
-        $reflectionObject = new ReflectionClass($object);
-        $reflectionProperty = $reflectionObject->getProperty($prop);
-        $reflectionProperty->setAccessible(true);
-        $reflectionProperty->setValue($object, $value);
+        $o = new MockHasDynamicAttributes;
+        $this->expectException(UndefinedAttributeException::class);
+        $o->attribute('invalid');
     }
+
+    public function testAttributesReturnsAllValues()
+    {
+        $o = new MockHasDynamicAttributes;
+        $this->assertSame(['p1' => 'v1', 'p2' => 'v2'], $o->attributes());
+    }
+
+    public function testSetAttributeSetsValueAsName()
+    {
+        $o = new MockHasDynamicAttributes;
+        $o->setAttribute('p1', 'changed');
+        $this->assertSame('changed', $o->attributes['p1']);
+    }
+
+    public function testSetAttributesRewritesAllValues()
+    {
+        $o = new MockHasDynamicAttributes;
+        $o->setAttribute('p1', 'changed');
+
+        $attributes = ['p2' => 'changed', 'p3' => 'changed'];
+        $o->setAttributes($attributes);
+        $this->assertSame($attributes, $o->attributes);
+    }
+}
+
+class MockHasDynamicAttributes
+{
+    use HasDynamicAttributes;
+    public $attributes = ['p1' => 'v1', 'p2' => 'v2'];
 }
