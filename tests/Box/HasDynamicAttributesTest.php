@@ -7,6 +7,11 @@ use PHPUnit\Framework\TestCase;
 
 class HasDynamicAttributesTest extends TestCase implements HasAttributesTestInterface
 {
+    use HasAttributesTest_HasDynamicAttributes;
+}
+
+trait HasAttributesTest_HasDynamicAttributes
+{
     public function testAttributeReturnsValueByName()
     {
         $o = new MockHasDynamicAttributes;
