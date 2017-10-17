@@ -8,7 +8,7 @@ trait RequiresAttributesGetter
      * @param $name
      * @return mixed
      */
-    abstract function attribute($name);
+    abstract function attribute(string $name);
 
     /**
      * @return array of attributes
