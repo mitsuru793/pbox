@@ -26,11 +26,11 @@ class AddsPropertyAccessToDynamicAttributesTest extends TestCase
 
             public function setPropAttribute($value)
             {
-                $this->prop = 'from setter';
+                $this->prop = "[$value]";
             }
         };
         $mock->prop = 'from outside';
-        $this->assertSame('from setter', $mock->prop);
+        $this->assertSame('[from outside]', $mock->prop);
     }
 
     public function testCallGetterWhenSetProperty()
@@ -42,11 +42,11 @@ class AddsPropertyAccessToDynamicAttributesTest extends TestCase
 
             public function getPropAttribute($value)
             {
-                return 'from setter';
+                return "[$value]";
             }
         };
         $mock->prop = 'from outside';
-        $this->assertSame('from setter', $mock->prop);
+        $this->assertSame('[from outside]', $mock->prop);
     }
 
     public function testNotCallAccessorWhenAccessPublicProperty()
@@ -58,12 +58,12 @@ class AddsPropertyAccessToDynamicAttributesTest extends TestCase
 
             public function getPropAttribute($value)
             {
-                return 'from getter';
+                return "[$value]";
             }
 
             public function setPropAttribute($value)
             {
-                return 'from setter';
+                return "[$value]";
             }
         };
         $mock->prop = 'from outside';

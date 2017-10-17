@@ -24,11 +24,11 @@ class AddsPropertyAccessToStaticAttributesTest extends TestCase
 
             public function setPropAttribute($value)
             {
-                $this->prop = 'from setter';
+                $this->prop = "[$value]";
             }
         };
         $object->prop = 'from outside';
-        $this->assertSame('from setter', $object->prop);
+        $this->assertSame('[from outside]', $object->prop);
     }
 
     public function testCallGetterWhenSetProperty()
@@ -39,11 +39,11 @@ class AddsPropertyAccessToStaticAttributesTest extends TestCase
 
             public function getPropAttribute($value)
             {
-                return 'from setter';
+                return "[$value]";
             }
         };
         $object->prop = 'from outside';
-        $this->assertSame('from setter', $object->prop);
+        $this->assertSame('[from outside]', $object->prop);
     }
 
     public function testNotCallAccessorWhenAccessPublicProperty()
@@ -54,12 +54,12 @@ class AddsPropertyAccessToStaticAttributesTest extends TestCase
 
             public function getPropAttribute($value)
             {
-                return 'from getter';
+                return "[$value]";
             }
 
             public function setPropAttribute($value)
             {
-                return 'from setter';
+                return "[$value]";
             }
         };
         $object->prop = 'from outside';
