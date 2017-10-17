@@ -5,7 +5,7 @@ namespace Pbox\Box;
 use Pbox\Exception\UndefinedAttributeException;
 use PHPUnit\Framework\TestCase;
 
-class HasDynamicAttributesTest extends TestCase
+class HasDynamicAttributesTest extends TestCase implements HasAttributesTestInterface
 {
     public function testAttributeReturnsValueByName()
     {
