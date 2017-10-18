@@ -2,33 +2,79 @@
 
 namespace Pbox\Box;
 
+use Pbox\Exception\AccessHiddenPropertyException;
+use Pbox\Exception\UndefinedPropertyException;
+
 trait HasStaticAttributes
 {
+    use RequiresAttributesAccessor;
+
     /**
-     * Returns array of exposed properties to outside.
-     * You can expose properties to outside even if they are not public, so protected or private.
-     *
-     * @return array
+     * {@inheritdoc}
+     */
+    function attribute(string $name)
+    {
+        if ($this->isHiddenProperty($name)) {
+            throw new AccessHiddenPropertyException($name);
+        }
+
+        $allProps = get_object_vars($this);
+        if (array_key_exists($name, $allProps)) {
+            return $allProps[$name];
+        }
+
+        throw new UndefinedPropertyException($name);
+    }
+
+    /**
+     * {@inheritdoc}
      */
     public function attributes(): array
     {
         $allProps = get_object_vars($this);
-        $metaProps = $this->hiddenProperties();
 
         $publicProps = [];
-        foreach ($allProps as $prop => $value) {
-            if (!isset($metaProps[$prop])) {
-                $publicProps[$prop] = $value;
+        foreach ($allProps as $name => $value) {
+            if ($this->isHiddenProperty($name)) {
+                throw new AccessHiddenPropertyException($name);
             }
+            $publicProps[$name] = $value;
         }
         return $publicProps;
     }
 
+    public function setAttribute(string $name, $value)
+    {
+        if ($this->isHiddenProperty($name)) {
+            throw new AccessHiddenPropertyException($name);
+        }
+        if (!property_exists($this, $name)) {
+            throw new UndefinedPropertyException($name);
+        }
+        $this->$name = $value;
+        return $this;
+    }
+
+    function setAttributes(array $attributes)
+    {
+        foreach ($attributes as $name => $value) {
+            if ($this->isHiddenProperty($name)) {
+                throw new AccessHiddenPropertyException($name);
+            }
+            if (!property_exists($this, $name)) {
+                throw new UndefinedPropertyException($name);
+            }
+            $this->$name = $value;
+        }
+        return $this;
+    }
+
     /**
-     * Returns array of hidden properties from outside.
+     * Checks if the name is hidden.
      * You can distinguish hidden properties even in not public one, so protected and private one.
      *
-     * @return array
+     * @param string $name property name
+     * @return bool
      */
-    abstract protected function hiddenProperties(): array;
+    abstract function isHiddenProperty(string $name): bool;
 }
